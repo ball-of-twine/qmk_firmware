@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |       |     |          |     |       |                                       
  *                                ┌───────┼───────┼─────┤          ├─────┼───────┼───────┐                               
  *                                | Space |       |     |          |     |       | Enter |                               
- *                                |  /L1  | Bkspc ├─────┤          ├─────┤  Tab  |  /L2  |                               
+ *                                | /Sym  | Bkspc ├─────┤          ├─────┤  Tab  | /Nav  |                               
  *                                |       |       |     |          |     |       |       |                               
  *                                └───────┴───────┴─────┘          └─────┴───────┴───────┘                               
  */
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,      _______,      _______,      _______,                                                 _______,      _______,      _______,      _______,      _______,
                                                                      _______, _______,        _______, _______,
                                                        /*2.0u*/      /*2.0u*/ _______,        _______, /*2.0u*/ /*2.0u*/
-                                                       LT(2,KC_SPC), KC_BSPC, _______,        _______, KC_TAB,  LT(3,KC_ENT)
+                                           LT(LAYER_SYMBOLS,KC_SPC), KC_BSPC, _______,        _______, KC_TAB,  LT(LAYER_NAV,KC_ENT)
   ),
 /* Keymap 1: Qwerty
  * ┌─────┬───────┬───────┬────────┬─────────┬─────┬─────┐          ┌─────┬─────┬─────────┬────────┬───────┬───────┬─────┐
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |       |     |          |     |       |                                       
  *                                ┌───────┼───────┼─────┤          ├─────┼───────┼───────┐                               
  *                                | Space |       |     |          |     |       | Enter |                               
- *                                |  /L1  | Bkspc ├─────┤          ├─────┤  Tab  |  /L2  |                               
+ *                                | /Sym  | Bkspc ├─────┤          ├─────┤  Tab  | /Nav  |                               
  *                                |       |       |     |          |     |       |       |                               
  *                                └───────┴───────┴─────┘          └─────┴───────┴───────┘                               
  */
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,      _______,      _______,      _______,                                                 _______,      _______,      _______,      _______,         _______,
                                                                      _______, _______,        _______, _______,
                                                        /*2.0u*/      /*2.0u*/ _______,        _______, /*2.0u*/ /*2.0u*/
-                                                       LT(2,KC_SPC), KC_BSPC, _______,        _______, KC_TAB,  LT(3,KC_ENT)
+                                           LT(LAYER_SYMBOLS,KC_SPC), KC_BSPC, _______,        _______, KC_TAB,  LT(LAYER_NAV,KC_ENT)
   ),
 /* Keymap 2: Symbols
  * ┌─────┬────────┬─────┬─────┬─────────┬─────┬─────┐          ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┐
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────┼────────┼─────┼─────┼─────────┼─────┼─────┤          ├─────┼─────┼─────┼─────┼─────┼─────┼─────┤
  * |     | ESC/L0 |  -  |  {  |    }    |  _  |     |          |     |  -  |  7  |  8  |  9  |  +  |     |
  * ├─────┼────────┼─────┼─────┼─────────┼─────┤     |          |     ├─────┼─────┼─────┼─────┼─────┼─────┤
- * |     | NOP/L4 |  =  |  (  | )/Shift |  +  |─────|          ├─────┤  *  |  4  |  5  |  6  |  0  |     |
+ * |     | gui/fn |  '  |  (  | )/Shift |  =  |─────|          ├─────┤  *  |  4  |  5  |  6  |  0  |     |
  * ├─────┼────────┼─────┼─────┼─────────┼─────┤     |          |     ├─────┼─────┼─────┼─────┼─────┼─────┤
  * |     |        |  \  |  [  |    ]    |  |  |     |          |     |  .  |  1  |  2  |  3  |  -  |     |
  * ├─────┼────────┼─────┼─────┼─────────┼─────┴─────┘          └─────┴─────┼─────┼─────┼─────┼─────┼─────┤
@@ -120,13 +120,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [LAYER_SYMBOLS] = LAYOUT_ergodox_pretty(
     _______, _______,    _______,  _______, _______,         _______,  _______,        _______, _______,  _______, _______, _______, _______,  _______,
-    _______, TD(TD_ESC), KC_NO,    KC_LCBR, KC_RCBR,         KC_MINUS, _______,        _______, KC_MINUS, KC_7,    KC_8,    KC_9,    KC_PLUS,  _______,
-    _______, MO(5),      KC_QUOTE, KC_LPRN, LSFT_T(KC_RPRN), KC_EQUAL, /*1.5u*/        /*1.5u*/ KC_ASTR,  KC_4,    KC_5,    KC_6,    KC_0,     _______,
-    _______, KC_NO,      KC_NO,    KC_LBRC, KC_RBRC,         KC_BSLS,  _______,        _______, KC_DOT,   KC_1,    KC_2,    KC_3,    KC_MINUS, _______,
+    _______, TD(TD_ESC), KC_MINUS, KC_LCBR, KC_RCBR,         KC_UNDS,  _______,        _______, KC_MINUS, KC_7,    KC_8,    KC_9,    KC_PLUS,  _______,
+    _______, KC_LGUI,    KC_QUOTE, KC_LPRN, LSFT_T(KC_RPRN), KC_EQUAL, /*1.5u*/        /*1.5u*/ KC_ASTR,  KC_4,    KC_5,    KC_6,    KC_0,     _______,
+    _______, KC_NO,      KC_BSLS,  KC_LBRC, KC_RBRC,         KC_PIPE,  _______,        _______, KC_DOT,   KC_1,    KC_2,    KC_3,    KC_MINUS, _______,
     _______, _______,    _______,  _______, _______,                                                      _______, _______, _______, _______,  _______,
                                                               _______, _______,        _______, _______,
                                                      /*2.0u*/ /*2.0u*/ _______,        _______, /*2.0u*/ /*2.0u*/
-                                               KC_TRNS/*LT*/, _______, _______,        _______, _______, _______
+                                               /*LT*/KC_TRNS, _______, _______,        _______, _______, _______
   ),
 /* Keymap 3: Navigation
  * ┌─────┬────────┬───────┬──────┬───────┬─────┬─────┐          ┌─────┬─────┬───────┬──────┬───────┬────────┬─────┐
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,    _______, _______, _______, _______, _______,        _______, _______,   _______, _______, _______, _______, _______,
     _______, TD(TD_ESC), KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,        _______, KC_INSERT, KC_HOME, KC_UP,   KC_END,  KC_PGUP, _______,
     _______, KC_LGUI,    KC_LALT, KC_LCTL, KC_LSFT, KC_NO,   /*1.5u*/        /*1.5u*/ KC_DELETE, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
-    _______, KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,        _______, _______,   TO(2),   TO(3),   TO(4),   TO(5),   _______,
+    _______, KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,        _______, _______,   TO(LAYER_SYMBOLS), TO(LAYER_NAV), TO(LAYER_MOUSE), TO(LAYER_FN_KEYS),   _______,
     _______, _______,    _______, _______, _______,                                              _______, _______, _______, _______, _______,
                                                     _______, _______,        _______, _______,
                                            /*2.0u*/ /*2.0u*/ _______,        _______, /*2.0u*/ /*2.0u*/
@@ -212,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______,       _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______, _______,
     _______, TD(TD_ESC),    KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,        _______, KC_NO,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
     _______, KC_TRNS/*MO*/, KC_NO,   KC_NO,   KC_NO,   KC_NO,   /*1.5u*/        /*1.5u*/ KC_NO,   KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
-    _______, KC_NO,         KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,        _______, KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
+    _______, _______,         KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,        _______, KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
     _______, _______,       _______, _______, _______,                                            _______, _______, _______, _______, _______,
                                                        _______, _______,        _______, _______,
                                               /*2.0u*/ /*2.0u*/ _______,        _______, /*2.0u*/ /*2.0u*/
@@ -277,6 +277,37 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return state;
 };
 
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+const key_override_t gui_f1_key_override = ko_make_basic(MOD_MASK_GUI, KC_1, KC_F1);
+const key_override_t gui_f2_key_override = ko_make_basic(MOD_MASK_GUI, KC_2, KC_F2);
+const key_override_t gui_f3_key_override = ko_make_basic(MOD_MASK_GUI, KC_3, KC_F3);
+const key_override_t gui_f4_key_override = ko_make_basic(MOD_MASK_GUI, KC_4, KC_F4);
+const key_override_t gui_f5_key_override = ko_make_basic(MOD_MASK_GUI, KC_5, KC_F5);
+const key_override_t gui_f6_key_override = ko_make_basic(MOD_MASK_GUI, KC_6, KC_F6);
+const key_override_t gui_f7_key_override = ko_make_basic(MOD_MASK_GUI, KC_7, KC_F7);
+const key_override_t gui_f8_key_override = ko_make_basic(MOD_MASK_GUI, KC_8, KC_F8);
+const key_override_t gui_f9_key_override = ko_make_basic(MOD_MASK_GUI, KC_9, KC_F9);
+const key_override_t gui_f10_key_override = ko_make_basic(MOD_MASK_GUI, KC_PLUS, KC_F10);
+const key_override_t gui_f11_key_override = ko_make_basic(MOD_MASK_GUI, KC_0, KC_F11);
+const key_override_t gui_f12_key_override = ko_make_basic(MOD_MASK_GUI, KC_MINUS, KC_F12);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+	&delete_key_override,
+  &gui_f1_key_override,
+  &gui_f2_key_override,
+  &gui_f3_key_override,
+  &gui_f4_key_override,
+  &gui_f5_key_override,
+  &gui_f6_key_override,
+  &gui_f7_key_override,
+  &gui_f8_key_override,
+  &gui_f9_key_override,
+  &gui_f10_key_override,
+  &gui_f11_key_override,
+  &gui_f12_key_override,
+	NULL // Null terminate the array of overrides!
+};
 
 typedef struct {
     bool is_press_action;
