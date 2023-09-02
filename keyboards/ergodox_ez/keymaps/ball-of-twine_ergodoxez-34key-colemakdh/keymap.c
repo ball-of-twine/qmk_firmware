@@ -196,14 +196,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                            └───────┴───────┴──────┘          └──────┴───────┴───────┘                                                    
  */
   [LAYER_FULL_NOMODS] = LAYOUT_ergodox_pretty(
-    TD(TD_ESC), KC_1,  KC_2,    KC_3,    KC_4,  KC_5, KC_P6,        KC_P5,  KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS,
-    KC_TAB,     KC_Q,  KC_W,    KC_E,    KC_R,  KC_T, KC_P7,        KC_P4,  KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSLS,
-    KC_P0,      KC_A,  KC_S,    KC_D,    KC_F,  KC_G, /*      1.5u      */  KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT,    KC_Z,  KC_X,    KC_C,    KC_V,  KC_B, KC_P8,        KC_P3,  KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    KC_LCTL,    KC_,   KC_LALT, KC_LEFT, KC_RIGHT,                                 KC_UP, KC_DOWN, KC_LBRC, KC_RBRC, KC_P1,
-                                            KC_F13,  KC_F14,        KC_F15,  KC_F16,
-                                  /*2.0u*/ /*2.0u*/ KC_HOME,        KC_PGUP, /*2.0u*/ /*2.0u*/
-                                   KC_SPC, KC_BSPC,  KC_END,        KC_PGDN, KC_TAB,   KC_ENT
+    TD(TD_ESC), KC_1,    KC_2,    KC_3,    KC_4,  KC_5, KC_P6,        KC_P5,  KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS,
+    KC_TAB,     KC_Q,    KC_W,    KC_E,    KC_R,  KC_T, KC_P7,        KC_P4,  KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_BSLS,
+    KC_P0,      KC_A,    KC_S,    KC_D,    KC_F,  KC_G, /*      1.5u      */  KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,  KC_B, KC_P8,        KC_P3,  KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+    KC_LCTL,    KC_LGUI, KC_LALT, KC_LEFT, KC_RIGHT,                                 KC_UP, KC_DOWN, KC_LBRC, KC_RBRC, KC_P1,
+                                              KC_F13,  KC_F14,        KC_F15,  KC_F16,
+                                    /*2.0u*/ /*2.0u*/ KC_HOME,        KC_PGUP, /*2.0u*/ /*2.0u*/
+                                     KC_SPC, KC_BSPC,  KC_END,        KC_PGDN, KC_TAB,   KC_ENT
   )
 };
 
@@ -267,12 +267,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   uint8_t layer = biton(state);
   ergodox_board_led_off();
   switch (layer) {
-    case BASE_COLEMAK:  set_ergodox_leds(0, 0, 0); break;
-    case BASE_QWERTY:   set_ergodox_leds(1, 1, 1); break;
-    case LAYER_SYMBOLS: set_ergodox_leds(1, 0, 0); break;
-    case LAYER_NAV:     set_ergodox_leds(0, 1, 0); break;
-    case LAYER_MOUSE:   set_ergodox_leds(0, 0, 1); break;
-    default:            set_ergodox_leds(0, 0, 0); break;
+    case BASE_COLEMAK:      set_ergodox_leds(0, 0, 0); break;
+    case BASE_QWERTY:       set_ergodox_leds(1, 1, 1); break;
+    case LAYER_SYMBOLS:     set_ergodox_leds(1, 0, 0); break;
+    case LAYER_NAV:         set_ergodox_leds(0, 1, 0); break;
+    case LAYER_MOUSE:       set_ergodox_leds(0, 0, 1); break;
+    case LAYER_FULL_NOMODS: set_ergodox_leds(1, 1, 1); break;
+    default:                set_ergodox_leds(0, 0, 0); break;
   }
   return state;
 };
